@@ -1,0 +1,95 @@
+@media screen and (max-width: 1875px) {
+  header+main {
+    padding-top: 13.3%;
+  }
+}
+
+@media screen and (max-width: 1699px) {
+  .view-date-select .view-type-body {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+  .view-date-select .view-type-body .calendar-content {
+    margin-bottom: 20px;
+  }
+  header+.main {
+    padding-top: 14.5%;
+  }
+}
+
+@media screen and (max-width: 1358px) {
+  .main .box-search .box-patient-no {
+    padding: 10px 0px 10px 10px;
+  }
+  .main .box-search .box-patient-no .patient-no-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 15px;
+    justify-content: center;
+  }
+  .main .box-search .box-patient-no .patient-no-title .tick-selected {
+    margin-right: 0px;
+  }
+  .main .box-search .box-menu-search .menu-search-title .item .text-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0px;
+  }
+  .main .box-search .box-menu-search .menu-search-title .item .tick-selected {
+    margin-right: 0px;
+  }
+  .main .box-search .box-patient-no .patient-no-selected .error-input-patient-no .item-selected .label {
+    width: 25%;
+  }
+  .main .box-search .box-patient-no .patient-no-input {
+    margin-left: 3px;
+  }
+  .container .header .item-menu-right .info-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main .box-search .box-menu-search .menu-search-condition .item .view-type-select .view-type-body {
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .main .box-search .box-menu-search .menu-search-condition .item .search-kind {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .menu-search-condition-content {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .main .box-search .box-patient-no .patient-no-input #patient-no-input-history {
+    margin-left: 17px;
+  }
+  #profile-info .profile-info-patient-represent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 8px;
+    justify-content: center;
+    padding-top: 6px;
+  }
+  #profile-info .profile-info-patient-no .patient-no-input-msg {
+    font-size: 11px;
+    margin-left: 2%;
+    color: red;
+    margin-top: 10px;
+  }
+  #profile-info .profile-info-patient-physical-blood-group {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  header+.main {
+    padding-top: 28%;
+  }
+}

@@ -1,0 +1,43 @@
+body {
+  margin: 0px;
+  background-color: #f5fdfe;
+  overflow-y: scroll;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: black;
+  padding: 0px;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka,
+    "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+.container .footer {
+  background-color: #2b82ac;
+  height: 30px;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  color: white;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  position: fixed;
+  z-index: 4;
+}
+.container .footer .hospital-name {
+  flex-grow: 1;
+}
+.container .footer .copy-right-by {
+  flex-grow: 1;
+}
+.container .footer .convert-time {
+  flex-grow: 1;
+}
+.btn-dropmenu {
+  border: 0px solid;
+  padding: 0.8em 3.7em;
+  border-radius: 10px;
+  transition: all 0.2s;
+}

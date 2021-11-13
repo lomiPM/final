@@ -1,0 +1,579 @@
+/* The container */
+
+* {
+  scrollbar-face-color: #2b82ac;
+  scrollbar-track-color: #F5F5F5;
+  scrollbar-shadow-color: #2b82ac;
+}
+
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  /* margin-bottom: 12px; */
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-left: 15px;
+  margin-bottom: 7px;
+  margin-right: 13px;
+}
+
+/* Hide the browser's default checkbox */
+
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+/* On mouse-over, add a grey background color */
+
+.checkbox:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+.checkbox input:checked~.checkmark {
+  background-color: #2b82ac;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+
+.checkbox input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+
+.checkbox .checkmark:after {
+  left: 7px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.checkbox-all {
+  display: block;
+  position: relative;
+  padding-right: 51px;
+  cursor: pointer;
+  padding-top: 6px;
+  font-size: 17px;
+}
+
+/* Hide the browser's default checkbox */
+
+.checkbox-all input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0px;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+
+.checkmark-all {
+  position: absolute;
+  top: 8px;
+  left: 40px;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+.checkmark-text {
+  margin-bottom: 8px;
+}
+
+/* On mouse-over, add a grey background color */
+
+.checkbox-all:hover input~.checkmark-all {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+.checkbox-all input:checked~.checkmark-all {
+  background-color: white;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark-all:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+
+.checkbox-all input:checked~.checkmark-all:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+
+.checkbox-all .checkmark-all:after {
+  left: 7px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #2b82ac;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.radio {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 7px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-left: 15px;
+  margin-right: 13px;
+}
+
+.radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* On mouse-over, add a grey background color */
+
+.radio:hover input~.checkmark-radio {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+
+.radio input:checked~.checkmark-radio {
+  background-color: #2b82ac;
+}
+
+/* Show the indicator (dot/circle) when checked */
+
+.radio input:checked~.checkmark-radio:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+
+.radio .checkmark-radio:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.checkmark-radio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.checkmark-radio:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* The Modal (background) */
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 150px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content */
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  border: 1px solid #888;
+  width: 35%;
+  height: 530px;
+  border-radius: 10px;
+}
+
+.modal-content .header-modal {
+  text-align: center;
+  background-color: #2b82ac;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 50px;
+}
+
+.modal-content .header-modal div {
+  padding-top: 10px;
+}
+
+.modal-content .body-modal {
+  height: 80%;
+  padding: 20px;
+}
+
+.modal-content .body-modal div {
+  background-color: lightgray;
+  height: 100%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.modal-content .footer-modal {
+  height: 50px;
+  background-color: white;
+  margin-top: 7px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+}
+
+.modal-content .footer-modal .btn-select {
+  border-radius: 10px;
+  border: 0px solid;
+  height: 35px;
+  width: 100px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #2b82ac;
+  cursor: pointer;
+}
+
+.modal-content .footer-modal .btn-select:hover {
+  box-shadow: 0 3px black;
+}
+
+/* The Close Button */
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.close:hover, .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal a.close-modal {
+  display: none;
+}
+
+.modal .body-modal select {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #2b82ac;
+}
+
+input[type=text] {
+  outline: none;
+}
+
+.inputGroup {
+  background-color: #fff;
+  display: block;
+  margin: 10px 10px 0px 0px;
+  height: auto;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d2d7e1;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+}
+
+.inputGroup label {
+  padding-right: 40px;
+  display: block;
+  text-align: left;
+  color: #3c454c;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 200ms ease-in;
+  overflow: hidden;
+}
+
+.inputGroup label:after {
+  width: 20px;
+  height: 20px;
+  content: '';
+  border: 2px solid #d1d7dc;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+  background-repeat: no-repeat;
+  background-position: -1px -2px;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+
+.inputGroup input:checked~label:before {
+  transform: translate(-50%, -50%) scale3d(56, 56, 1);
+  opacity: 1;
+}
+
+.inputGroup input:checked~label:after {
+  background-color: #2B82AB;
+  border-color: #2B82AB;
+}
+
+.inputGroup input:checked~label {
+  color: #2B82AB;
+  border-radius: 5px;
+}
+
+.inputGroup input {
+  width: 32px;
+  height: 32px;
+  order: 1;
+  z-index: 2;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.checkfield-selected {
+  border: solid 1px #2b82ac;
+}
+
+.checkfield-selected:before, .checkfield-selected:after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.checkfield-selected:before {
+  border-top-left-radius: 10px;
+  border-width: 15px;
+  border-left-color: #2b82ac;
+  border-top-color: #2b82ac;
+}
+
+.triangle.active::before, .triangle.active::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  right: -3px;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.triangle.active::after {
+  border-width: 9px;
+  border-right-color: #2b82ac;
+  border-top-color: #2b82ac;
+  transform: rotate(225deg);
+}
+
+div.ui-datepicker {
+  font-size: 13px;
+}
+
+.button-search {
+  float: left;
+  width: 8%;
+  height: 44px;
+  text-align: center;
+  padding: 8px;
+  background: white;
+  color: black;
+  font-size: 17px;
+  cursor: pointer;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button-search:hover {
+  background: white;
+}
+
+.legend-text {
+  background: #2b82ac;
+  border-radius: 12px;
+  color: white;
+  width: 93%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 3;
+}
+
+.count-kind {
+  margin-left: 10px;
+}
+
+.search-kind .button-search {
+  width: 12%;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip i {
+  color: #2b82ac;
+  margin-top: 15px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 321px;
+  background-color: #383838;
+  color: #ffffff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px 15px 10px 15px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  right: 0%;
+  font-weight: 500;
+  margin-left: 0px;
+  border: 1px solid #383838;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 5%;
+  margin-left: 0px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #383838 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.icon-describe {
+  width: 6px;
+  height: 26px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 3px;
+  border: 1px;
+  background: -webkit-linear-gradient(left, #2B82AB, #2B82AB) repeat scroll 0 0;
+  background-color: #2B82AB;
+  border: solid 1px #2B82AB;
+  box-shadow: 0 1px 0 rgb(255 255 255 / 50%) inset;
+}
+
+.main-wapper .search1 .wapper-contents .wapper-content-form-search .wapper-content-form-search-content fieldset .patient-name-input input {
+  width: 96%;
+  height: 75%;
+  margin-top: 5px;
+  border: 1px solid #d2d7e1;
+  border-radius: 8px;
+  padding-left: 7px;
+}
+
+.main-wapper .main-wapper-content .wapper-contents .wapper-content-form-search .view-type-body label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}

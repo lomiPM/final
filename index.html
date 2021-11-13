@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- <link rel="stylesheet" href="./asset/css/jquery-ui.min.css" /> -->
+  <link rel="stylesheet" href="./asset/css/all.min.css" />
+  <link rel="stylesheet" href="./asset/css/header.css" />
+  <link rel="stylesheet" href="./asset/css/index.css" />
+  <link rel="stylesheet" href="./asset/css/main.css" />
+  <link rel="stylesheet" href="./asset/css/input.css">
+  <link rel="stylesheet" href="./asset/css/date-picker.css">
+  <link rel="stylesheet" href="./asset/css/responsive.css">
+  <link rel="stylesheet" href="./asset/css/history.css">
+
+  <script src="./asset/js/jquery.min.js"></script>
+  <script src="./asset/js/jquery-ui.min.js"></script>
+  <script src="./asset/js/jquery.ui.datepicker-ja.min.js"></script>
+  <script>
+    $(function () {
+      $(".stFromDate , .stToDate").datepicker({
+        yearRange: "1990:2040",
+        changeMonth: true,
+        changeYear: true,
+        duration: 300,
+        dateFormat: "yy年mm月dd日",
+        monthNames: [
+          "1月",
+          "2月",
+          "3月",
+          "4月",
+          "5月",
+          "6月",
+          "7月",
+          "8月",
+          "9月",
+          "10月",
+          "11月",
+          "12月",
+        ],
+        showButtonPanel: true
+      });
+      $.datepicker._gotoToday = function (id) {
+        var target = $(id);
+        var inst = this._getInst(target[0]);
+        var date = new Date();
+        this._setDate(inst, date);
+        this._hideDatepicker();
+      };
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="header">
+        <div class="logo">
+          <img src="./asset/images/logo_header.png" />
+        </div>
+        <div class="item-menu-left" id="tabs">
+          <div class="item-menu" id="search1">
+            <div class="item">患者検索</div>
+            <div class="line"></div>
+          </div>
+          <div class="item-menu" id="history1">
+            <div class="item checkfield-selected">カルテ</div>
+            <div class="line active"></div>
+          </div>
+          <div class="item-menu" id="history2">
+            <div class="item">オーダ</div>
+            <div class="line"></div>
+          </div>
+          <div class="item-menu" id="simple1">
+            <div class="item">患者基本</div>
+            <div class="line"></div>
+          </div>
+          <div class="item-menu" id="simple2">
+            <div class="item">看護情報</div>
+            <div class="line"></div>
+          </div>
+          <div class="item-menu" id="calendar1">
+            <div class="item">経過表</div>
+            <div class="line"></div>
+          </div>
+        </div>
+        <div class="item-menu-right">
+          <div class="info-user">
+            <h4 class="title-user-info">
+              <i class="fas fa-user"></i> 1842 (診療情報管理士)
+            </h4>
+            <button class="btn-logout">ログアウト</button>
+          </div>
+        </div>
+      </div>
+      <div class="content-profile-info">
+        <div id="profile-info">
+          <div class="profile-info-patient profile-info-patient-icon">
+            <div class="frame">
+              <img id="avatar" alt="" class="light-logo" src="./asset/images/patient/70F.png" width="80" height="80">
+              <span id="infoPatient-sex">女性</span>
+            </div>
+          </div>
+          <div class="profile-info-patient profile-info-patient-no">
+            <fieldset id="profile-no">
+              <legend>
+                <div class="view-type-title">患者番号</div>
+              </legend>
+              <span class="profile-info-patient-label-input"><span class="info-profile-input-data">
+                  <input type="text" id="patient-no" value=""></span></span>
+              <!-- <span class="patient-no-input-msg"> ※ 患者番号を入力してください。</span> -->
+            </fieldset>
+            <fieldset id="profile-name">
+              <legend>
+                <div class="view-type-title">氏名</div>
+              </legend>
+              <span class="info-profile-input-data patient-name"></span>
+              <span class="info-profile-input-data patient-no-number-change"></span>
+            </fieldset>
+            <fieldset class="info-profile">
+              <legend>
+                <div class="view-type-title">血液型</div>
+              </legend>
+              <span class="info-profile-input-data">B型 Rh(+)</span>
+            </fieldset>
+            <fieldset class="info-profile">
+              <legend>
+                <div class="view-type-title">体重</div>
+              </legend>
+              <span class="info-profile-input-data">57.0kg</span>
+            </fieldset>
+            <fieldset class="info-profile">
+              <legend>
+                <div class="view-type-title">身長</div>
+              </legend>
+              <span class="info-profile-input-data">156.0cm</span>
+            </fieldset>
+            <fieldset id="profile-date">
+              <legend>
+                <div class="view-type-title">生年月日</div>
+              </legend>
+              <span class="info-profile-input-data">1931年07月21日 (90歳 0ヶ月)</span>
+            </fieldset>
+            <fieldset class="profile-date">
+              <legend>
+                <div class="view-type-title">診療期間</div>
+              </legend>
+              <span class="info-patient-physical-time">2015年10月01日</span> <span class="info-profile-towards"> ~ </span>
+              <span class="info-patient-physical-time">2016年09月20日</span>
+            </fieldset>
+          </div>
+          <div class="profile-info-patient profile-info-patient-represent">
+            <span class="profile-info-patient-represent-item"><img alt=""
+                src="./asset/images/allergy/food_allergy_48.png"></span> <span
+              class="profile-info-patient-represent-item"><img alt=""
+                src="./asset/images/allergy/food_allergy_nodata.png"></span> <span
+              class="profile-info-patient-represent-item"><img alt=""
+                src="./asset/images/allergy/infection_48.png"></span>
+          </div>
+          <div class="profile-info-patient-represent-item profile-info-patient-zoom-icon">
+            <div class="min-zoom-icon"></div>
+            <div class="max-zoom-icon"></div>
+
+          </div>
+        </div>
+        <div class="profile-info-patient-zoom-out">
+          <div class="input-patient-no">
+            <div class="search">
+              <div class="input-bar">
+                <input type="search" name="search" id="search-text" autocomplete="off" />
+
+                <button id="search" title="検 索">
+                  <i class="fa fa-search"></i> <span class="a11y-hidden">検
+                    索</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="enlarge-zoom"></div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="control-form-search">
+        <div class="control-form-search-label">検索語メニュー</div>
+        <div class="control-form-search-icon"></div>
+      </div>
+      <div id="search1" class="box-search">
+        開発中
+      </div>
+      <div id="history1" class="box-search active">
+        <div class="main-wapper">
+          <div class="main-wapper-form-search">
+            <div class="search-info search-search" id="form-search-history1">
+              <div class="title-search-info">
+                <button class="btn-search-patient">検 索</button>
+                <button class="btn-close-form">
+                  <i class="fas fa-bars"></i>
+                </button>
+              </div>
+              <div class="form-search-kind">
+                <fieldset class="fieldset-patient-name-search1">
+                  <legend class="legend-modal-form-search">
+                    <label class="lbl-patient-name lbl-search-area">種 別</label>
+                  </legend>
+                  <div class="modal-form-search">
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-1" name="option1" type="checkbox" />
+                      <label for="history1-option-kind-1">看護</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-2" name="option1" type="checkbox" />
+                      <label for="history1-option-kind-2">処置</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-3" name="option3" type="checkbox" />
+                      <label for="history1-option-kind-3">指示簿</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-4" name="option4" type="checkbox" />
+                      <label for="history1-option-kind-4">注射</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-5" name="option5" type="checkbox" />
+                      <label for="history1-option-kind-5">検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-6" name="option6" type="checkbox" />
+                      <label for="history1-option-kind-6">放射線</label>
+                    </div>
+                  </div>
+                  <div class="search-kind-form-search">
+                    <input type="text" placeholder="種別を検索 ">
+                  </div>
+                </fieldset>
+              </div>
+              <div class="view-type-select-checkbox">
+                <fieldset class="fieldset-patient-name-search1">
+                  <legend>
+                    <div class="view-type-title">履歴表示</div>
+                  </legend>
+                  <div class="view-type-body">
+                    <label class="checkbox">中止分を表示
+                      <input type="checkbox" checked="checked">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox">変更履歴を表示
+                      <input type="checkbox" checked="">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="view-type-select-radio">
+                <fieldset class="fieldset-patient-name-search1">
+                  <legend>
+                    <div class="view-type-title">基準日付</div>
+                  </legend>
+                  <div class="view-type-body">
+                    <label class="radio">
+                      作成日 <input type="radio" name="radioOrderDate" />
+                      <span class="checkmark-radio"></span>
+                    </label>
+                    <label class="radio">
+                      開始日 <input type="radio" name="radioOrderDate" checked />
+                      <span class="checkmark-radio"></span>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="view-type-select-radio">
+                <fieldset class="fieldset-patient-name-search1">
+                  <legend>
+                    <div class="view-type-title">状 態</div>
+                  </legend>
+                  <div class="view-type-body">
+                    <label class="radio">
+                      全て <input type="radio" name="radioST" />
+                      <span class="checkmark-radio"></span>
+                    </label>
+                    <label class="radio">
+                      依頼 <input type="radio" name="radioST" checked />
+                      <span class="checkmark-radio"></span>
+                    </label>
+                    <label class="radio">
+                      実施 <input type="radio" name="radioST" />
+                      <span class="checkmark-radio"></span>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="view-type-select-radio">
+                <div>
+                  <fieldset class="fieldset-patient-name-search1">
+                    <legend>
+                      <div class="view-type-title">入外区分</div>
+                    </legend>
+                    <div class="view-type-body">
+                      <label class="radio">
+                        入外 <input type="radio" name="radioNG" />
+                        <span class="checkmark-radio"></span>
+                      </label>
+                      <label class="radio">
+                        入院 <input type="radio" name="radioNG" checked />
+                        <span class="checkmark-radio"></span>
+                      </label>
+                      <label class="radio">
+                        外来 <input type="radio" name="radioNG" />
+                        <span class="checkmark-radio"></span>
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="view-type-select-radio">
+                <div>
+                  <fieldset class="fieldset-patient-name-search1">
+                    <legend>
+                      <div class="view-type-title">承 認</div>
+                    </legend>
+                    <div class="view-type-body">
+                      <label class="radio">
+                        全て <input type="radio" name="radioApp" />
+                        <span class="checkmark-radio"></span>
+                      </label>
+                      <label class="radio">
+                        承認 <input type="radio" name="radioApp" checked />
+                        <span class="checkmark-radio"></span>
+                      </label>
+                      <label class="radio">
+                        未承認 <input type="radio" name="radioApp" />
+                        <span class="checkmark-radio"></span>
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="form-search-kind">
+                <fieldset class="fieldset-patient-name-search1">
+                  <legend class="legend-modal-form-search">
+                    <label class="lbl-patient-name lbl-search-area">種 別</label>
+                  </legend>
+                  <div class="modal-form-search">
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-1" name="option1" type="checkbox" />
+                      <label for="history1-option-kind-1">看護</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-2" name="option1" type="checkbox" />
+                      <label for="history1-option-kind-2">処置</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-3" name="option3" type="checkbox" />
+                      <label for="history1-option-kind-3">指示簿</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-4" name="option4" type="checkbox" />
+                      <label for="history1-option-kind-4">注射</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-5" name="option5" type="checkbox" />
+                      <label for="history1-option-kind-5">検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-6" name="option6" type="checkbox" />
+                      <label for="history1-option-kind-6">放射線</label>
+                    </div>
+                  </div>
+                  <div class="search-kind-form-search">
+                    <input type="text" placeholder="種別を検索 ">
+                  </div>
+                </fieldset>
+              </div>
+              <div class="form-search-kind">
+                <fieldset class="fieldset-patient-name-search1">
+                  <legend class="legend-modal-form-search">
+                    <label class="lbl-patient-name lbl-search-area">種 別</label>
+                  </legend>
+
+                  <div class="modal-form-search">
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-1" name="option1" type="checkbox" />
+                      <label for="history1-option-kind-1">看護</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-2" name="option1" type="checkbox" />
+                      <label for="history1-option-kind-2">処置</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-3" name="option3" type="checkbox" />
+                      <label for="history1-option-kind-3">指示簿</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-4" name="option4" type="checkbox" />
+                      <label for="history1-option-kind-4">注射</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-5" name="option5" type="checkbox" />
+                      <label for="history1-option-kind-5">検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-6" name="option6" type="checkbox" />
+                      <label for="history1-option-kind-6">放射線</label>
+                    </div>
+                  </div>
+                  <div class="search-kind-form-search">
+                    <input type="text" placeholder="種別を検索 ">
+                  </div>
+                </fieldset>
+              </div>
+              <div class="form-search-kind">
+                <fieldset class="fieldset-patient-name-search1">
+                  <legend class="legend-modal-form-search">
+                    <label class="lbl-patient-name lbl-search-area">種 別</label>
+                  </legend>
+
+                  <div class="modal-form-search">
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-1" name="option1" type="checkbox" />
+                      <label for="history1-option-kind-1">看護</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-2" name="option1" type="checkbox" />
+                      <label for="history1-option-kind-2">処置</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-3" name="option3" type="checkbox" />
+                      <label for="history1-option-kind-3">指示簿</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-4" name="option4" type="checkbox" />
+                      <label for="history1-option-kind-4">注射</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-5" name="option5" type="checkbox" />
+                      <label for="history1-option-kind-5">検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-kind-6" name="option6" type="checkbox" />
+                      <label for="history1-option-kind-6">放射線</label>
+                    </div>
+                  </div>
+                  <div class="search-kind-form-search">
+                    <input type="text" placeholder="種別を検索 ">
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+          <div class="main-wapper-list-date">
+            <div class="main-wapper-title main-wapper-list-date-title"><span>診 療 日</span></div>
+            <div class="main-wapper-content main-wapper-list-date-content">
+            </div>
+          </div>
+          <div class="main-wapper-list-result">
+            <div class="main-wapper-title main-wapper-list-result-title">
+              <div class="main-wapper-title-input-checkbox">
+                <label class="checkbox">全選択
+                  <input type="checkbox" checked="checked">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="main-wapper-title-btn-print">
+                <input type="button" name="print" id="btn-print" value="印 刷" class="btn-print">
+              </div>
+            </div>
+            <div class="main-wapper-content main-wapper-list-result-content">
+
+            </div>
+          </div>
+        </div>
+        <div class="box-patient-no">
+          <div class="patient-no-input">
+            <input type="text" name="" id="patient-no-input-history" placeholder="患者番号">
+            <div class="button-search tooltip btn-submit" type="submit">
+              <i class="fas fa-search fa-lg"></i>
+            </div>
+          </div>
+        </div>
+        <div class="box-search-form">
+          <div class="box-title">
+            <div class="search-title"><i class="icon-blue"></i>検索条件</div>
+            <div class="setting-search-title">
+              <div><i class="icon-blue"></i>検索条件の設定</div>
+            </div>
+            <div class="selected-condition-title">
+              <div><i class="icon-blue"></i>選択した検索条件</div>
+            </div>
+          </div>
+          <div class="box-menu-search">
+            <div class="menu-search-title">
+              <div class="item active">
+                <div class="text-item">
+                  <div class="triangle active"></div>種 別
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>履歴表示
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>表示期間
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>診療科
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>記載者
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>病 棟
+                </div>
+              </div>
+            </div>
+            <div class="menu-search-condition">
+              <div class="item active">
+                <div class="search-kind">
+                  <input type="text" class="input-search-kind" placeholder="種別を検索 " />
+                </div>
+                <fieldset class="menu-search-condition-content">
+                  <legend align="left" class="legend-text">
+                    <div class="legend-checkbox-all">
+                      <div class="count-kind"><span>10000件 選択中</span></div>
+                      <div class="check-all-kind">
+                        <label class="checkbox-all">
+                          <div class="checkmark-text">全て</div> <input type="checkbox">
+                          <span class="checkmark-all"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </legend>
+                  <div class="kind-selected">
+                    <div class="inputGroup">
+                      <input id="box-search-history1-option-kind-1" name="option1" type="checkbox" />
+                      <label for="box-search-history1-option-kind-1">看護</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="box-search-history1-option-kind-2" name="option1" type="checkbox" />
+                      <label for="box-search-history1-option-kind-2">処置</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="box-search-history1-option-kind-3" name="option3" type="checkbox" />
+                      <label for="box-search-history1-option-kind-3">指示簿</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="box-search-history1-option-kind-4" name="option4" type="checkbox" />
+                      <label for="box-search-history1-option-kind-4">注射</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="box-search-history1-option-kind-5" name="option5" type="checkbox" />
+                      <label for="box-search-history1-option-kind-5">検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="box-search-history1-option-kind-6" name="option6" type="checkbox" />
+                      <label for="box-search-history1-option-kind-6">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="box-search-history1-option-kind-7" name="option7" type="checkbox" />
+                      <label for="box-search-history1-option-kind-7">内視鏡</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="box-search-history1-option-kind-8" name="option7" type="checkbox" />
+                      <label for="box-search-history1-option-kind-8">生理検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="box-search-history1-option-kind-9" name="option7" type="checkbox" />
+                      <label for="box-search-history1-option-kind-9">テンプレート</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="item">
+                <div class="view-type-select">
+
+                  <div class="view-type-select-checkbox">
+                    <fieldset>
+                      <legend>
+                        <div class="view-type-title">履歴表示</div>
+                      </legend>
+                      <div class="view-type-body">
+                        <label class="checkbox">中止分を表示
+                          <input type="checkbox" checked="checked">
+                          <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox">変更履歴を表示
+                          <input type="checkbox" checked="">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="view-type-select-radio">
+                    <fieldset>
+                      <legend>
+                        <div class="view-type-title">基準日付</div>
+                      </legend>
+                      <div class="view-type-body">
+                        <label class="radio">
+                          作成日 <input type="radio" name="radioOrderDate" />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                        <label class="radio">
+                          開始日 <input type="radio" name="radioOrderDate" checked />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="view-type-select-radio">
+                    <fieldset>
+                      <legend>
+                        <div class="view-type-title">状 態</div>
+                      </legend>
+                      <div class="view-type-body">
+                        <label class="radio">
+                          全て <input type="radio" name="radioST" />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                        <label class="radio">
+                          依頼 <input type="radio" name="radioST" checked />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                        <label class="radio">
+                          実施 <input type="radio" name="radioST" />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="view-type-select-radio">
+                    <div>
+                      <fieldset>
+                        <legend>
+                          <div class="view-type-title">入外区分</div>
+                        </legend>
+                        <div class="view-type-body">
+                          <label class="radio">
+                            入外 <input type="radio" name="radioNG" />
+                            <span class="checkmark-radio"></span>
+                          </label>
+                          <label class="radio">
+                            入院 <input type="radio" name="radioNG" checked />
+                            <span class="checkmark-radio"></span>
+                          </label>
+                          <label class="radio">
+                            外来 <input type="radio" name="radioNG" />
+                            <span class="checkmark-radio"></span>
+                          </label>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                  <div class="view-type-select-radio">
+                    <div>
+                      <fieldset>
+                        <legend>
+                          <div class="view-type-title">承 認</div>
+                        </legend>
+                        <div class="view-type-body">
+                          <label class="radio">
+                            全て <input type="radio" name="radioApp" />
+                            <span class="checkmark-radio"></span>
+                          </label>
+                          <label class="radio">
+                            承認 <input type="radio" name="radioApp" checked />
+                            <span class="checkmark-radio"></span>
+                          </label>
+                          <label class="radio">
+                            未承認 <input type="radio" name="radioApp" />
+                            <span class="checkmark-radio"></span>
+                          </label>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="view-date-select">
+                  <div>
+                    <div class="item-date-picker">
+                      <fieldset>
+                        <legend>
+                          <div class="view-type-title">表示期間</div>
+                        </legend>
+                        <div class="view-type-body">
+                          <div class="calendar-content">
+                            <span>日付から: <label>選択解除</label></span>
+                            <div class="input-date">
+                              <input type="text" class="stFromDate calendar-container" placeholder="yyyy年mm月dd日">
+                              <button class="btn-fromDate"><img src="./asset/images/date-picker/calendar.png"
+                                  alt=""></button>
+                            </div>
+
+                          </div>
+                          <div class="calendar-content">
+                            <span>現在まで: <label>選択解除</label></span>
+                            <div class="input-date">
+                              <input type="text" class="stToDate calendar-container" placeholder="yyyy年mm月dd日">
+                              <button class="btn-toDate"><img src="./asset/images/date-picker/calendar.png"
+                                  alt=""></button>
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="search-kind">
+                  <input type="text" class="input-search-kind" placeholder="診療科を検索 " />
+                </div>
+                <fieldset class="menu-search-condition-content">
+                  <legend align="left" class="legend-text">
+                    <div class="legend-checkbox-all">
+                      <div class="count-kind"><span>10000件 選択中</span></div>
+                      <div class="check-all-kind">
+                        <label class="checkbox-all">
+                          <div class="checkmark-text">全て</div> <input type="checkbox">
+                          <span class="checkmark-all"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </legend>
+                  <div class="kind-selected">
+                    <div class="inputGroup">
+                      <input id="history1-option-dept-1" name="option1" type="checkbox" />
+                      <label for="history1-option-dept-1">01：内科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-dept-2" name="option1" type="checkbox" />
+                      <label for="history1-option-dept-2">02：精神科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-dept-3" name="option1" type="checkbox" />
+                      <label for="history1-option-dept-3">03：神経科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-dept-4" name="option2" type="checkbox" />
+                      <label for="history1-option-dept-4">04：呼吸器内科・呼吸器腫瘍内科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-dept-5" name="option3" type="checkbox" />
+                      <label for="history1-option-dept-5">05：消化器科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-dept-6" name="option4" type="checkbox" />
+                      <label for="history1-option-dept-6">06：循環器科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-dept-7" name="option5" type="checkbox" />
+                      <label for="history1-option-dept-7">07：小児科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-dept-8" name="option6" type="checkbox" />
+                      <label for="history1-option-dept-8">08：外科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-dept-9" name="option7" type="checkbox" />
+                      <label for="history1-option-dept-9">09：整形外科</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="item">
+                <div class="search-kind">
+                  <input type="text" class="input-search-kind" placeholder="記載者を検索 " />
+                </div>
+                <fieldset class="menu-search-condition-content">
+                  <legend align="left" class="legend-text">
+                    <div class="legend-checkbox-all">
+                      <div class="count-kind"><span>10000件 選択中</span></div>
+                      <div class="check-all-kind">
+                        <label class="checkbox-all">
+                          <div class="checkmark-text">全て</div> <input type="checkbox">
+                          <span class="checkmark-all"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </legend>
+                  <div class="kind-selected">
+                    <div class="inputGroup">
+                      <input id="history1-option-staff-1" name="option1" type="checkbox" />
+                      <label for="history1-option-staff-1">（近大）岡本　慎司</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-staff-2" name="option1" type="checkbox" />
+                      <label for="history1-option-staff-2">（停止中）</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-staff-3" name="option1" type="checkbox" />
+                      <label for="history1-option-staff-3">（和医大）岡本　一仁</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-staff-4" name="option2" type="checkbox" />
+                      <label for="history1-option-staff-4">＃処置</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-staff-5" name="option3" type="checkbox" />
+                      <label for="history1-option-staff-5">＃小児時間外</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-staff-6" name="option4" type="checkbox" />
+                      <label for="history1-option-staff-6">＃津村　昌</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-staff-7" name="option5" type="checkbox" />
+                      <label for="history1-option-staff-7">＊宇都宮　琢秀</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-staff-8" name="option6" type="checkbox" />
+                      <label for="history1-option-staff-8">＊岡藤　浩平</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-staff-9" name="option7" type="checkbox" />
+                      <label for="history1-option-staff-9">＊梶山　博</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="item">
+                <div class="search-kind">
+                  <input type="text" class="input-search-kind" placeholder="病棟を検索 " />
+                </div>
+                <fieldset class="menu-search-condition-content">
+                  <legend align="left" class="legend-text">
+                    <div class="legend-checkbox-all">
+                      <div class="count-kind"><span>10000件 選択中</span></div>
+                      <div class="check-all-kind">
+                        <label class="checkbox-all">
+                          <div class="checkmark-text">全て</div> <input type="checkbox">
+                          <span class="checkmark-all"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </legend>
+                  <div class="kind-selected">
+                    <div class="inputGroup">
+                      <input id="history1-option-ward-1" name="option1" type="checkbox" />
+                      <label for="history1-option-ward-1">BE3：東館３階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-ward-2" name="option1" type="checkbox" />
+                      <label for="history1-option-ward-2">BE4：東館４階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-ward-3" name="option1" type="checkbox" />
+                      <label for="history1-option-ward-3">BE5：東館５階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-ward-4" name="option2" type="checkbox" />
+                      <label for="history1-option-ward-4">BE6：東館６階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-ward-5" name="option3" type="checkbox" />
+                      <label for="history1-option-ward-5">BE7：東館７階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-ward-6" name="option4" type="checkbox" />
+                      <label for="history1-option-ward-6">BE8：東館８階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-ward-7" name="option5" type="checkbox" />
+                      <label for="history1-option-ward-7">BW3：西館３階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-ward-8" name="option6" type="checkbox" />
+                      <label for="history1-option-ward-8">BW4：西館４階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history1-option-ward-9" name="option7" type="checkbox" />
+                      <label for="history1-option-ward-9">CCU：集中治療室（ＣＣＵ・ＩＣＵ） </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            <div class="menu-search-selected">
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">種 別</div>
+                </legend>
+                <div class="value active">輸血 , 放射線 , 内視鏡 , 生理検査 , テンプレート , 輸血 , 手術 ,リハビリ , 病名</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">履歴表示</div>
+                </legend>
+                <div class="value">中止分を表示 , 変更履歴を表示</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">表示期間</div>
+                </legend>
+                <div class="value">2020年08月25日 ~ 2021年08月25日</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">診療科</div>
+                </legend>
+                <div class="value">
+                  全て</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">記載者</div>
+                </legend>
+                <div class="value">
+                  全て</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">病 棟</div>
+                </legend>
+                <div class="value">
+                  全て</div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="btn-box">
+            <div class="btn-col-1"></div>
+            <div class="btn-col-2"></div>
+            <div class="btn-col-3">
+              <div class="btn-clear"><button>初期化</button></div>
+              <div class="btn-submit"><button>検 索</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="history2" class="box-search">
+        <div class="main-wapper">
+          <div class="main-wapper-list-date"></div>
+          <div class="main-wapper-list-result"></div>
+        </div>
+        <div class="box-search-form">
+          <div class="box-title">
+            <div class="search-title"><i class="icon-blue"></i>検索条件</div>
+            <div class="setting-search-title">
+              <div><i class="icon-blue"></i>検索条件の設定</div>
+            </div>
+            <div class="selected-condition-title">
+              <div><i class="icon-blue"></i>選択した検索条件</div>
+            </div>
+          </div>
+          <div class="box-patient-no">
+            <div class="patient-no-title">患者番号 <span class="tick-selected">必要</span></div>
+            <div class="patient-no-input">
+              <div class="patient-no-input-body">
+                <input type="text" name="" id="patient-no-input-history" placeholder="患者番号">
+                <div class="button-search tooltip" type="submit">
+                  <i class="fas fa-question fa-sm"></i>
+                  <span class="tooltiptext">※ この項目は必須です。<br>※ このフィールドには（文字ではなく）数字を入力してください。</span>
+                </div>
+              </div>
+            </div>
+            <div class="patient-no-selected">
+              <div class="error-input-patient-no">
+                <div class="item-selected">
+                  <div class="label">患者番号<span>:</span></div>
+                  <div class="value">0000000606</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="box-menu-search">
+            <div class="menu-search-title">
+              <div class="item active">
+                <div class="text-item">
+                  <div class="triangle active"></div>種 別
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>履歴表示
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>表示期間
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>診療科
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>記載者
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>病 棟
+                </div>
+              </div>
+            </div>
+            <div class="menu-search-condition">
+              <div class="item active">
+                <div class="search-kind">
+                  <input type="text" class="input-search-kind" placeholder="種別を検索 " />
+                </div>
+                <fieldset class="menu-search-condition-content">
+                  <legend align="left" class="legend-text">
+                    <div class="legend-checkbox-all">
+                      <div class="count-kind"><span>10000件 選択中</span></div>
+                      <div class="check-all-kind">
+                        <label class="checkbox-all">
+                          <div class="checkmark-text">全て</div> <input type="checkbox">
+                          <span class="checkmark-all"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </legend>
+                  <div class="kind-selected">
+                    <div class="inputGroup">
+                      <input id="history2-option-kind-1" name="option1" type="checkbox" />
+                      <label for="history2-option-kind-1">看護</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-kind-2" name="option1" type="checkbox" />
+                      <label for="history2-option-kind-2">処置</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-kind-3" name="option3" type="checkbox" />
+                      <label for="history2-option-kind-3">指示簿</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-kind-4" name="option4" type="checkbox" />
+                      <label for="history2-option-kind-4">注射</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-kind-5" name="option5" type="checkbox" />
+                      <label for="history2-option-kind-5">検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-kind-6" name="option6" type="checkbox" />
+                      <label for="history2-option-kind-6">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-kind-7" name="option7" type="checkbox" />
+                      <label for="history2-option-kind-7">内視鏡</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-kind-8" name="option7" type="checkbox" />
+                      <label for="history2-option-kind-8">生理検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-kind-9" name="option7" type="checkbox" />
+                      <label for="history2-option-kind-9">テンプレート</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="item">
+                <div class="view-type-select">
+
+                  <div class="view-type-select-checkbox">
+                    <fieldset>
+                      <legend>
+                        <div class="view-type-title">履歴表示</div>
+                      </legend>
+                      <div class="view-type-body">
+                        <label class="checkbox">中止分を表示
+                          <input type="checkbox" checked="checked">
+                          <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox">変更履歴を表示
+                          <input type="checkbox" checked="">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="view-type-select-radio">
+                    <fieldset>
+                      <legend>
+                        <div class="view-type-title">基準日付</div>
+                      </legend>
+                      <div class="view-type-body">
+                        <label class="radio">
+                          作成日 <input type="radio" name="radioOrderDate" />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                        <label class="radio">
+                          開始日 <input type="radio" name="radioOrderDate" checked />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="view-type-select-radio">
+                    <fieldset>
+                      <legend>
+                        <div class="view-type-title">状 態</div>
+                      </legend>
+                      <div class="view-type-body">
+                        <label class="radio">
+                          全て <input type="radio" name="radioST" />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                        <label class="radio">
+                          依頼 <input type="radio" name="radioST" checked />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                        <label class="radio">
+                          実施 <input type="radio" name="radioST" />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="view-type-select-radio">
+                    <div>
+                      <fieldset>
+                        <legend>
+                          <div class="view-type-title">入外区分</div>
+                        </legend>
+                        <div class="view-type-body">
+                          <label class="radio">
+                            入外 <input type="radio" name="radioNG" />
+                            <span class="checkmark-radio"></span>
+                          </label>
+                          <label class="radio">
+                            入院 <input type="radio" name="radioNG" checked />
+                            <span class="checkmark-radio"></span>
+                          </label>
+                          <label class="radio">
+                            外来 <input type="radio" name="radioNG" />
+                            <span class="checkmark-radio"></span>
+                          </label>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                  <div class="view-type-select-radio">
+                    <div>
+                      <fieldset>
+                        <legend>
+                          <div class="view-type-title">承 認</div>
+                        </legend>
+                        <div class="view-type-body">
+                          <label class="radio">
+                            全て <input type="radio" name="radioApp" />
+                            <span class="checkmark-radio"></span>
+                          </label>
+                          <label class="radio">
+                            承認 <input type="radio" name="radioApp" checked />
+                            <span class="checkmark-radio"></span>
+                          </label>
+                          <label class="radio">
+                            未承認 <input type="radio" name="radioApp" />
+                            <span class="checkmark-radio"></span>
+                          </label>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="view-date-select">
+                  <div>
+                    <div class="item-date-picker">
+                      <fieldset>
+                        <legend>
+                          <div class="view-type-title">表示期間</div>
+                        </legend>
+                        <div class="view-type-body">
+                          <div class="calendar-content">
+                            <span>日付から: <label>選択解除</label></span>
+                            <div class="input-date">
+                              <input type="text" class="stFromDate calendar-container" placeholder="yyyy年mm月dd日">
+                              <button class="btn-fromDate"><img src="./asset/images/date-picker/calendar.png"
+                                  alt=""></button>
+                            </div>
+
+                          </div>
+                          <div class="calendar-content">
+                            <span>現在まで: <label>選択解除</label></span>
+                            <div class="input-date">
+                              <input type="text" class="stToDate calendar-container" placeholder="yyyy年mm月dd日">
+                              <button class="btn-toDate"><img src="./asset/images/date-picker/calendar.png"
+                                  alt=""></button>
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="search-kind">
+                  <input type="text" class="input-search-kind" placeholder="診療科を検索 " />
+                </div>
+                <fieldset class="menu-search-condition-content">
+                  <legend align="left" class="legend-text">
+                    <div class="legend-checkbox-all">
+                      <div class="count-kind"><span>10000件 選択中</span></div>
+                      <div class="check-all-kind">
+                        <label class="checkbox-all">
+                          <div class="checkmark-text">全て</div> <input type="checkbox">
+                          <span class="checkmark-all"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </legend>
+                  <div class="kind-selected">
+                    <div class="inputGroup">
+                      <input id="history2-option-dept-1" name="option1" type="checkbox" />
+                      <label for="history2-option-dept-1">01：内科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-dept-2" name="option1" type="checkbox" />
+                      <label for="history2-option-dept-2">02：精神科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-dept-3" name="option1" type="checkbox" />
+                      <label for="history2-option-dept-3">03：神経科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-dept-4" name="option2" type="checkbox" />
+                      <label for="history2-option-dept-4">04：呼吸器内科・呼吸器腫瘍内科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-dept-5" name="option3" type="checkbox" />
+                      <label for="history2-option-dept-5">05：消化器科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-dept-6" name="option4" type="checkbox" />
+                      <label for="history2-option-dept-6">06：循環器科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-dept-7" name="option5" type="checkbox" />
+                      <label for="history2-option-dept-7">07：小児科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-dept-8" name="option6" type="checkbox" />
+                      <label for="history2-option-dept-8">08：外科</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-dept-9" name="option7" type="checkbox" />
+                      <label for="history2-option-dept-9">09：整形外科</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="item">
+                <div class="search-kind">
+                  <input type="text" class="input-search-kind" placeholder="記載者を検索 " />
+                </div>
+                <fieldset class="menu-search-condition-content">
+                  <legend align="left" class="legend-text">
+                    <div class="legend-checkbox-all">
+                      <div class="count-kind"><span>10000件 選択中</span></div>
+                      <div class="check-all-kind">
+                        <label class="checkbox-all">
+                          <div class="checkmark-text">全て</div> <input type="checkbox">
+                          <span class="checkmark-all"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </legend>
+                  <div class="kind-selected">
+                    <div class="inputGroup">
+                      <input id="history2-option-staff-1" name="option1" type="checkbox" />
+                      <label for="history2-option-staff-1">（近大）岡本　慎司</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-staff-2" name="option1" type="checkbox" />
+                      <label for="history2-option-staff-2">（停止中）</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-staff-3" name="option1" type="checkbox" />
+                      <label for="history2-option-staff-3">（和医大）岡本　一仁</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-staff-4" name="option2" type="checkbox" />
+                      <label for="history2-option-staff-4">＃処置</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-staff-5" name="option3" type="checkbox" />
+                      <label for="history2-option-staff-5">＃小児時間外</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-staff-6" name="option4" type="checkbox" />
+                      <label for="history2-option-staff-6">＃津村　昌</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-staff-7" name="option5" type="checkbox" />
+                      <label for="history2-option-staff-7">＊宇都宮　琢秀</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-staff-8" name="option6" type="checkbox" />
+                      <label for="history2-option-staff-8">＊岡藤　浩平</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-staff-9" name="option7" type="checkbox" />
+                      <label for="history2-option-staff-9">＊梶山　博</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="item">
+                <div class="search-kind">
+                  <input type="text" class="input-search-kind" placeholder="病棟を検索 " />
+                </div>
+                <fieldset class="menu-search-condition-content">
+                  <legend align="left" class="legend-text">
+                    <div class="legend-checkbox-all">
+                      <div class="count-kind"><span>10000件 選択中</span></div>
+                      <div class="check-all-kind">
+                        <label class="checkbox-all">
+                          <div class="checkmark-text">全て</div> <input type="checkbox">
+                          <span class="checkmark-all"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </legend>
+                  <div class="kind-selected">
+                    <div class="inputGroup">
+                      <input id="history2-option-ward-1" name="option1" type="checkbox" />
+                      <label for="history2-option-ward-1">BE3：東館３階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-ward-2" name="option1" type="checkbox" />
+                      <label for="history2-option-ward-2">BE4：東館４階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-ward-3" name="option1" type="checkbox" />
+                      <label for="history2-option-ward-3">BE5：東館５階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-ward-4" name="option2" type="checkbox" />
+                      <label for="history2-option-ward-4">BE6：東館６階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-ward-5" name="option3" type="checkbox" />
+                      <label for="history2-option-ward-5">BE7：東館７階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-ward-6" name="option4" type="checkbox" />
+                      <label for="history2-option-ward-6">BE8：東館８階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-ward-7" name="option5" type="checkbox" />
+                      <label for="history2-option-ward-7">BW3：西館３階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-ward-8" name="option6" type="checkbox" />
+                      <label for="history2-option-ward-8">BW4：西館４階 </label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="history2-option-ward-9" name="option7" type="checkbox" />
+                      <label for="history2-option-ward-9">CCU：集中治療室（ＣＣＵ・ＩＣＵ） </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            <div class="menu-search-selected">
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">種 別</div>
+                </legend>
+                <div class="value active">輸血 , 放射線 , 内視鏡 , 生理検査 , テンプレート , 輸血 , 手術 ,リハビリ , 病名</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">履歴表示</div>
+                </legend>
+                <div class="value">中止分を表示 , 変更履歴を表示</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">表示期間</div>
+                </legend>
+                <div class="value">2020年08月25日 ~ 2021年08月25日</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">診療科</div>
+                </legend>
+                <div class="value">
+                  全て</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">記載者</div>
+                </legend>
+                <div class="value">
+                  全て</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">病 棟</div>
+                </legend>
+                <div class="value">
+                  全て</div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="btn-box">
+            <div class="btn-col-1"></div>
+            <div class="btn-col-2"></div>
+            <div class="btn-col-3">
+              <div class="btn-clear"><button>初期化</button></div>
+              <div class="btn-submit"><button>検 索</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="simple1" class="box-search">
+        <div class="main-wapper">
+          <div class="main-wapper-list-date"></div>
+          <div class="main-wapper-list-result"></div>
+        </div>
+        <div class="box-search-form">
+          <div class="box-title">
+            <div class="search-title"><i class="icon-blue"></i>検索条件</div>
+            <div class="setting-search-title">
+              <div><i class="icon-blue"></i>検索条件の設定</div>
+            </div>
+            <div class="selected-condition-title">
+              <div><i class="icon-blue"></i>選択した検索条件</div>
+            </div>
+          </div>
+          <div class="box-patient-no">
+            <div class="patient-no-title">患者番号 <span class="tick-selected">必要</span></div>
+            <div class="patient-no-input">
+              <div class="patient-no-input-body">
+                <input type="text" name="" id="patient-no-input-history" placeholder="患者番号">
+                <div class="button-search tooltip" type="submit">
+                  <i class="fas fa-question fa-sm"></i>
+                  <span class="tooltiptext">※ この項目は必須です。<br>※ このフィールドには（文字ではなく）数字を入力してください。</span>
+                </div>
+              </div>
+            </div>
+            <div class="patient-no-selected">
+              <div class="error-input-patient-no">
+                <div class="item-selected">
+                  <div class="label">患者番号<span>:</span></div>
+                  <div class="value">0000000606</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="box-menu-search">
+            <div class="menu-search-title">
+              <div class="item active">
+                <div class="text-item">
+                  <div class="triangle active"></div>種 別
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>履歴表示
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-search-condition">
+              <div class="item active">
+                <div class="search-kind">
+                  <input type="text" class="input-search-kind" placeholder="種別を検索 " />
+                </div>
+                <fieldset class="menu-search-condition-content">
+                  <legend align="left" class="legend-text">
+                    <div class="legend-checkbox-all">
+                      <div class="count-kind"><span>10000件 選択中</span></div>
+                      <div class="check-all-kind">
+                        <label class="checkbox-all">
+                          <div class="checkmark-text">全て</div> <input type="checkbox">
+                          <span class="checkmark-all"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </legend>
+                  <div class="kind-selected">
+                    <div class="inputGroup">
+                      <input id="simple1-option-kind-1" name="option1" type="checkbox" />
+                      <label for="simple1-option-kind-1">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple1-option-kind-2" name="option1" type="checkbox" />
+                      <label for="simple1-option-kind-2">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple1-option-kind-3" name="option1" type="checkbox" />
+                      <label for="simple1-option-kind-3">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple1-option-kind-4" name="option2" type="checkbox" />
+                      <label for="simple1-option-kind-4">内視鏡</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple1-option-kind-5" name="option3" type="checkbox" />
+                      <label for="simple1-option-kind-5">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple1-option-kind-6" name="option4" type="checkbox" />
+                      <label for="simple1-option-kind-6">生理検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple1-option-kind-7" name="option5" type="checkbox" />
+                      <label for="simple1-option-kind-7">生理検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple1-option-kind-8" name="option6" type="checkbox" />
+                      <label for="simple1-option-kind-8">テンプレート</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple1-option-kind-9" name="option7" type="checkbox" />
+                      <label for="simple1-option-kind-9">輸血</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="item">
+                <div class="view-type-select">
+                  <div class="view-type-select-checkbox">
+                    <fieldset>
+                      <legend>
+                        <div class="view-type-title">履歴表示</div>
+                      </legend>
+                      <div class="view-type-body">
+                        <label class="checkbox">中止分を表示
+                          <input type="checkbox" checked="checked">
+                          <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox">変更履歴を表示
+                          <input type="checkbox" checked="">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="menu-search-selected">
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">種 別</div>
+                </legend>
+                <div class="value active">輸血 , 放射線 , 内視鏡 , 生理検査 , テンプレート , 輸血 , 手術 ,リハビリ , 病名</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">履歴表示</div>
+                </legend>
+                <div class="value">中止分を表示 , 変更履歴を表示</div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="btn-box">
+            <div class="btn-col-1"></div>
+            <div class="btn-col-2"></div>
+            <div class="btn-col-3">
+              <div class="btn-clear"><button>初期化</button></div>
+              <div class="btn-submit"><button>検 索</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="simple2" class="box-search">
+        <div class="main-wapper">
+          <div class="main-wapper-list-date"></div>
+          <div class="main-wapper-list-result"></div>
+        </div>
+        <div class="box-search-form">
+          <div class="box-title">
+            <div class="search-title"><i class="icon-blue"></i>検索条件</div>
+            <div class="setting-search-title">
+              <div><i class="icon-blue"></i>検索条件の設定</div>
+            </div>
+            <div class="selected-condition-title">
+              <div><i class="icon-blue"></i>選択した検索条件</div>
+            </div>
+          </div>
+
+          <div class="box-menu-search">
+            <div class="menu-search-title">
+              <div class="item active">
+                <div class="text-item">
+                  <div class="triangle active"></div>種 別
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>履歴表示
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-search-condition">
+              <div class="item active">
+                <div class="search-kind">
+                  <input type="text" class="input-search-kind" placeholder="種別を検索 " />
+                </div>
+                <fieldset class="menu-search-condition-content">
+                  <legend align="left" class="legend-text">
+                    <div class="legend-checkbox-all">
+                      <div class="count-kind"><span>10000件 選択中</span></div>
+                      <div class="check-all-kind">
+                        <label class="checkbox-all">
+                          <div class="checkmark-text">全て</div> <input type="checkbox">
+                          <span class="checkmark-all"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </legend>
+                  <div class="kind-selected">
+                    <div class="inputGroup">
+                      <input id="simple2-option-kind-1" name="option1" type="checkbox" />
+                      <label for="simple2-option-kind-1">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple2-option-kind-2" name="option1" type="checkbox" />
+                      <label for="simple2-option-kind-2">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple2-option-kind-3" name="option1" type="checkbox" />
+                      <label for="simple2-option-kind-3">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple2-option-kind-4" name="option2" type="checkbox" />
+                      <label for="simple2-option-kind-4">内視鏡</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple2-option-kind-5" name="option3" type="checkbox" />
+                      <label for="simple2-option-kind-5">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple2-option-kind-6" name="option4" type="checkbox" />
+                      <label for="simple2-option-kind-6">生理検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple2-option-kind-7" name="option5" type="checkbox" />
+                      <label for="simple2-option-kind-7">生理検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple2-option-kind-8" name="option6" type="checkbox" />
+                      <label for="simple2-option-kind-8">テンプレート</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="simple2-option-kind-9" name="option7" type="checkbox" />
+                      <label for="simple2-option-kind-9">輸血</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="item">
+                <div class="view-type-select">
+                  <div class="view-type-select-checkbox">
+                    <fieldset>
+                      <legend>
+                        <div class="view-type-title">履歴表示</div>
+                      </legend>
+                      <div class="view-type-body">
+                        <label class="checkbox">中止分を表示
+                          <input type="checkbox" checked="checked">
+                          <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox">変更履歴を表示
+                          <input type="checkbox" checked="">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="menu-search-selected">
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">種 別</div>
+                </legend>
+                <div class="value active">輸血 , 放射線 , 内視鏡 , 生理検査 , テンプレート , 輸血 , 手術 ,リハビリ , 病名</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">履歴表示</div>
+                </legend>
+                <div class="value">中止分を表示 , 変更履歴を表示</div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="btn-box">
+            <div class="btn-col-1"></div>
+            <div class="btn-col-2"></div>
+            <div class="btn-col-3">
+              <div class="btn-clear"><button>初期化</button></div>
+              <div class="btn-submit"><button>検 索</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="calendar1" class="box-search">
+        <div class="main-wapper">
+          <div class="main-wapper-list-date"></div>
+          <div class="main-wapper-list-result"></div>
+        </div>
+        <div class="box-search-form">
+          <div class="box-title">
+            <div class="search-title"><i class="icon-blue"></i>検索条件</div>
+            <div class="setting-search-title">
+              <div><i class="icon-blue"></i>検索条件の設定</div>
+            </div>
+            <div class="selected-condition-title">
+              <div><i class="icon-blue"></i>選択した検索条件</div>
+            </div>
+          </div>
+          <div class="box-patient-no">
+            <div class="patient-no-title">患者番号 <span class="tick-selected">必要</span></div>
+            <div class="patient-no-input">
+              <div class="patient-no-input-body">
+                <input type="text" name="" id="patient-no-input-history" placeholder="患者番号">
+                <div class="button-search tooltip" type="submit">
+                  <i class="fas fa-question fa-sm"></i>
+                  <span class="tooltiptext">※ この項目は必須です。<br>※ このフィールドには（文字ではなく）数字を入力してください。</span>
+                </div>
+              </div>
+            </div>
+            <div class="patient-no-selected">
+              <div class="error-input-patient-no">
+                <div class="item-selected">
+                  <div class="label">患者番号<span>:</span></div>
+                  <div class="value">0000000606</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="box-menu-search">
+            <div class="menu-search-title">
+              <div class="item active">
+                <div class="text-item">
+                  <div class="triangle active"></div>履歴表示
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>基準日付
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="text-item">
+                  <div class="triangle"></div>項 目
+                  <span class="tick-selected">選択中</span>
+                </div>
+              </div>
+            </div>
+            <div class="menu-search-condition">
+              <div class="item active">
+                <div class="view-type-select">
+                  <div class="view-type-select-checkbox">
+                    <fieldset class="fieldset view-type-select-fieldset ">
+                      <legend>
+                        <div class="view-type-title">履歴表示</div>
+                      </legend>
+                      <div class="view-type-body">
+                        <label class="checkbox">中止分を表示
+                          <input type="checkbox" checked="checked">
+                          <span class="checkmark"></span>
+                        </label>
+                        <label class="checkbox">変更履歴を表示
+                          <input type="checkbox">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="view-type-select-radio">
+                    <fieldset class="view-type-select-fieldset">
+                      <legend>
+                        <div class="view-type-title">表示期間</div>
+                      </legend>
+                      <div class="view-type-body">
+                        <label class="radio">
+                          1週間 <input type="radio" name="radioST" />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                        <label class="radio">
+                          2週間 <input type="radio" name="radioST" checked="checked" />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                        <label class="radio">
+                          30日間 <input type="radio" name="radioST" />
+                          <span class="checkmark-radio"></span>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="view-date-select">
+                  <div>
+                    <div class="item-date-picker">
+                      <fieldset>
+                        <legend>
+                          <div class="view-type-title">表示期間</div>
+                        </legend>
+                        <div class="view-type-body">
+                          <div class="calendar-content">
+                            <span>日付から: <label>選択解除</label></span>
+                            <div class="input-date">
+                              <input type="text" class="stFromDate calendar-container" placeholder="yyyy年mm月dd日">
+                              <button class="btn-fromDate"><img src="./asset/images/date-picker/calendar.png"
+                                  alt=""></button>
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="search-kind">
+                  <input type="text" class="input-search-kind" placeholder="種別を検索 " />
+                </div>
+                <fieldset class="menu-search-condition-content">
+                  <legend align="left" class="legend-text">
+                    <div class="legend-checkbox-all">
+                      <div class="count-kind"><span>10000件 選択中</span></div>
+                      <div class="check-all-kind">
+                        <label class="checkbox-all">
+                          <div class="checkmark-text">全て</div> <input type="checkbox">
+                          <span class="checkmark-all"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </legend>
+                  <div class="kind-selected">
+                    <div class="inputGroup">
+                      <input id="calendar1-option-kind-1" name="option1" type="checkbox" />
+                      <label for="calendar1-option-kind-1">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="calendar1-option-kind-2" name="option1" type="checkbox" />
+                      <label for="calendar1-option-kind-2">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="calendar1-option-kind-3" name="option1" type="checkbox" />
+                      <label for="calendar1-option-kind-3">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="calendar1-option-kind-4" name="option2" type="checkbox" />
+                      <label for="calendar1-option-kind-4">内視鏡</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="calendar1-option-kind-5" name="option3" type="checkbox" />
+                      <label for="calendar1-option-kind-5">放射線</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="calendar1-option-kind-6" name="option4" type="checkbox" />
+                      <label for="calendar1-option-kind-6">生理検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="calendar1-option-kind-7" name="option5" type="checkbox" />
+                      <label for="calendar1-option-kind-7">生理検査</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="calendar1-option-kind-8" name="option6" type="checkbox" />
+                      <label for="calendar1-option-kind-8">テンプレート</label>
+                    </div>
+                    <div class="inputGroup">
+                      <input id="calendar1-option-kind-9" name="option7" type="checkbox" />
+                      <label for="calendar1-option-kind-9">輸血</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            <div class="menu-search-selected">
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">履歴表示</div>
+                </legend>
+                <div class="value active">輸血 , 放射線 , 内視鏡 , 生理検査 , テンプレート , 輸血 , 手術 ,リハビリ , 病名</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">基準日付</div>
+                </legend>
+                <div class="value">中止分を表示 , 変更履歴を表示</div>
+              </fieldset>
+              <fieldset class="menu-search-condition-content result-search-condition-content">
+                <legend align="left" class="legend-title-result">
+                  <div class="label">項 目</div>
+                </legend>
+                <div class="value">2020年08月25日 ~ 2021年08月25日</div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="btn-box">
+            <div class="btn-col-1"></div>
+            <div class="btn-col-2"></div>
+            <div class="btn-col-3">
+              <div class="btn-clear"><button>初期化</button></div>
+              <div class="btn-submit"><button>検 索</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="hospital-name">コスモ開発病院</div>
+      <div class="copy-right-by">©CopyRight By Cosmo 2020</div>
+      <div class="convert-time">
+        ※2020年1月1日17時時点のデータとなります。
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
+<script>
+  $('.item-menu-left .item-menu').on('click', function () {
+    $('.item-menu-left .item-menu .line').removeClass("active");
+    $('.item-menu-left .item-menu .item').removeClass("checkfield-selected");
+    $(this).find('.line').addClass("active");
+    $(this).find('.item').addClass("checkfield-selected");
+    let idTab = $(this).attr('id');
+    $('.box-search').removeClass("active");
+    $('.box-search#' + idTab).addClass("active");
+  });
+  $('.menu-search-title .item').on('click', function () {
+    let idTab = $(this).closest('.box-search').attr('id');
+    $("#" + idTab + " .menu-search-title .item").removeClass("active");
+    $("#" + idTab + " .menu-search-title .triangle").removeClass("active");
+    $("#" + idTab + " .menu-search-condition .item").removeClass("active");
+    $("#" + idTab + " .menu-search-selected .value").removeClass("active");
+
+    $(this).addClass("active");
+    $(this).find('.triangle').addClass("active");
+    let n = $(".menu-search-title .item").index(this);
+    $(".menu-search-condition .item:eq(" + n + ")").addClass("active");
+    $(".menu-search-selected .value:eq(" + n + ")").addClass("active");
+  });
+  $('#history1 .btn-submit').on('click', function () {
+    $('#history1 .box-search-form').css({
+      "display": "none"
+    });
+    $('#history1 .main-wapper').css({
+      "display": "flex",
+      "flex-direction": "row",
+      "margin": "0px 0px 5px 5px",
+      "width": "99.5%"
+    });
+    $('.main .control-form-search').css({
+      "display": "flex"
+    });
+    // $('.main .main-wapper .main-wapper-form-search').css({
+    //   "display":"none"
+    // });
+    $('.main .main-wapper .main-wapper-list-date ').css({
+      "margin-left": "40px"
+    });
+    $('.main .main-wapper .main-wapper-list-result ').css({
+      "width": "89%"
+    });
+    $('.main').css("padding-top", "14%");
+    $('.content-profile-info').css("display", "flex");
+    $('.box-patient-no').css("display", "none");
+    var patient_value = document.getElementById('patient-no-input-history').value;
+    $("#patient-no").val(patient_value);
+    $(".patient-name").text("患者 " + patient_value);
+    $('.patient-no-number-change').text("ｶﾝｼﾞｬ: " + patient_value);
+
+
+  });
+  $('.main .control-form-search .control-form-search-icon').on('click', function () {
+    $('.main .main-wapper .main-wapper-form-search ').show();
+    $('.main .main-wapper .main-wapper-list-date ').css({
+      "margin-left": "0px"
+    });
+    $('.main .main-wapper .main-wapper-list-result ').css({
+      "width": "89%"
+    });
+    $('.main .control-form-search').css({
+      "display": "none"
+    });
+    $('.main .main-wapper .main-wapper-form-search').css({
+      "margin-left": "40px"
+    });
+    // $('#history1 .box-search-form').css({
+    //   "display":"block"
+    // });
+    // $('#history1 .main-wapper').css({
+    //   "display":"none"
+    // });
+    // $('.main').css("padding-top","8%");
+    // $('.content-profile-info').css("display","none");
+    // $('.box-patient-no').css("display","flex");
+
+  });
+  $('.main-wapper-form-search-close').on('click', function () {
+    $('.main .main-wapper .main-wapper-form-search').css({
+      "display": "none",
+    });
+    $('.main .control-form-search').css({
+      "display": "flex"
+    });
+    $('.main .main-wapper .main-wapper-list-date ').css({
+      "margin-left": "40px"
+    });
+    $('.main .main-wapper .main-wapper-list-result ').css({
+      "width": "89%"
+    });
+  });
+  $('.profile-info-patient-zoom-icon').on('click', function () {
+    $('#profile-info').css({
+      "display": "none"
+    });
+    $('.profile-info-patient-zoom-out').css({
+      "display": "flex"
+    });
+    $(' header + .main').css({
+      "padding-top": "10.3%"
+    });
+  });
+  $('.enlarge-zoom').on('click', function () {
+    $('#profile-info').css({
+      "display": "flex"
+    });
+    $('.profile-info-patient-zoom-out').css({
+      "display": "none"
+    });
+    $(' header + .main').css({
+      "padding-top": "13.5%"
+    });
+  });
+  $('.input-bar').on('click', function () {
+    $('.search .input-bar button').css({ "display": "none" });
+  });
+
+
+  $('.btn-fromDate, .btn-toDate').on('click', function () {
+    $(this).siblings("input").datepicker('show');
+  });
+  $('.btn-close-form').on('click', function () {
+    $('.main .main-wapper .main-wapper-form-search ').hide();
+    $('.main .control-form-search').css({
+      "display": "flex"
+    });
+    $('.main .main-wapper .main-wapper-list-date').css({
+      "margin-left": "40px"
+    });
+
+  });
+
+
+</script>

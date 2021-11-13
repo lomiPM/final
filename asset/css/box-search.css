@@ -1,0 +1,192 @@
+.search-main {
+  position: absolute;
+  left: 10px;
+  height: calc(100vh - 175px);
+  width: 99%;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+
+}
+.search-main .search-main-content {
+  left: 50%;
+  position: absolute;
+  width: 60%;
+}
+.search-main .search-main-content .input-search-main {
+  height: 45px;
+  width: 400px;
+  border-radius: 10px;
+  border: 1px solid;
+}
+.searchBox {
+  transform: translate(-50%, 50%);
+  background: #2b82ac;
+  height: 40px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.searchBox1 {
+  transform: translate(-50%, 30%);
+  display: flex;
+}
+.searchBox1 .searchBox1-lv1 {
+  margin-left: 15px;
+  background: white;
+  display: flex;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.searchBox1 .searchBox1-lv1 .view-type {
+  margin-left: 50px;
+}
+.searchBox1 .list-kind,
+.searchBox2 .list-kind {
+  display: flex;
+}
+.searchBox1 .btn-kind,
+.searchBox2 .btn-kind {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchBox1 input[type="button"],
+.searchBox2 input[type="button"] {
+  width: 60px;
+  border-radius: 5px;
+  border: 0px solid;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  background-color: #2b82ac;
+  height: 30px;
+}
+.searchBox1 .kind-selected,
+.searchBox2 .kind-selected {
+  margin-left: 10px;
+  width: 175px;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  border-radius: 10px;
+  background: white;
+  height: 100px;
+}
+.searchBox1 .searchBox1-lv1 .view-type-title {
+  margin-left: 10px;
+}
+.searchBox1 .searchBox1-lv1 .btn-clear-kind{
+    margin-top: 10px;
+  }
+
+.searchBox1 .searchBox1-lv1 .view-type-checkbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchBox1 .searchBox1-lv2 {
+  display: flex;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 120px;
+  background: white;
+  margin-left: 25px;
+}
+.searchBox1 .searchBox1-lv2 .view-type .view-type-checkbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchBox1 .searchBox1-lv2 .select-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 50px;
+}
+.searchBox1 .searchBox1-lv2 .view-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 50px;
+}
+.searchBox1 .searchBox1-lv2 .view-date .view-date-input {
+    display: flex;
+    flex-direction: column;
+}
+.searchBox1 .searchBox1-lv2 .view-date .view-date-input input {
+  width: 160px;
+  border-radius: 5px;
+  border: 1px solid;
+  height: 30px;
+}
+.searchBox1 .searchBox1-lv2 .view-date .view-date-input .view-date-input-todate {
+    margin-top: 25px;
+}
+
+.searchBox1 .searchBox1-lv2 .select-box select {
+  width: 80px;
+  border-radius: 5px;
+}
+
+.searchBox2 {
+  transform: translate(-50%, 50px);
+  display: flex;
+  width: 97%;
+}
+.searchBox2 .searchBox2-lv1 {
+  width: 100%;
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  margin-top: 10px;
+  flex-direction: column;
+  background: white;
+}
+.searchBox2 .searchBox2-lv1 .btn-clear-kind{
+    margin-top: 10px;
+}
+.searchBox2 .searchBox2-lv1 .content-more {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 10px;
+    margin-right: 10px;
+}
+.searchBox2 .searchBox2-lv1 .menu-box-show-more {
+    text-align: center;
+  }
+  .searchBox2 .searchBox2-lv1 .body-more {
+    display: none;
+    height: 135px;
+  }
+.searchButton {
+  color: black;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+
+
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: black;
+  font-size: 16px;
+  transition: 0.4s;
+  height: 40px;
+}
+.searchInput::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}

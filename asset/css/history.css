@@ -1,0 +1,317 @@
+.content-print body {
+    width: 100%;
+    font-size: 14px; 
+    font-family: Meiryo;
+}
+
+.content-print ul {
+    margin: 0;
+    /*margin-left: 0.5em;*/
+    margin-left: 10px;
+    padding: 0 0 0 0;
+}
+
+.content-print li {
+    margin-left: 0.5em;
+    list-style-position: outside;
+    list-style-type: none;
+}
+
+.content-print fieldset {
+    margin: 8px;
+    padding: 8px;
+}
+
+.content-print .fm-group1 {
+	border-radius:5px;
+    margin: 8px;
+    padding: 8px;
+    border-width: 2px !important;
+    border-style: groove !important;
+    border-color: threedface !important;
+    border-image: initial;
+} 
+.content-print table.Table {
+    width: 100%;
+    font-size: 14px;
+    font-family: Meiryo;
+    border-color: gray;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-left-style: solid;
+    border-left-width: 1px;
+    table-layout: auto;
+}
+.content-print .show-record{
+	width: 100%;
+    font-size: 15px;
+    font-family: Meiryo;
+    table-layout: auto;
+}
+
+.content-print .div-kenreiki{
+	width:100%;
+	overflow-x:scroll;
+	overflow-y:visible;
+	padding:0;
+}
+.content-print .keireki .headcol{
+	position:absolute;
+	left:0;
+	top:auto;
+	margin-top:-1px;
+	white-space: nowrap;
+}
+.content-print .show-record-kenreiki{
+	width:100%;
+	font-size:15px;
+	font-family: Meiryo;
+}
+.content-print .show-record-kenreiki tr:first-child{
+	background-color: #81BEF7;
+}
+.content-print .show-record-kenreiki tr td{
+	padding:3px;
+	/*width:calc(100%/3);*/
+}
+.content-print .show-record tr td{
+	padding: 3px;
+    white-space: pre-wrap;
+}
+.content-print table.Table th {
+    padding: 5px;
+    font-weight: 400;
+    color: white;
+    background-color: #435C76;
+}
+
+.content-print table.Table {
+	width:100%;
+}
+.content-print table.Table tr td {
+    padding: 5px;
+    border-color: gray;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    white-space: pre-wrap;
+}
+.content-print #patient {
+    top: 50%; 
+    float: left; 
+    margin: 5px; 
+    padding: 5px; 
+    width: 100%; 
+    background-color: White; 
+    display: none;
+    z-index: 9999;
+}
+
+.content-print #sub_title {
+    margin: 5px; 
+    padding-top: 5px; 
+    padding-bottom: 5px; 
+    padding-left: 15px; 
+    width: calc(100% - 10px);  
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #435C76;
+}
+
+.content-print #check_print {
+    top : -5px;
+    left : -10px;
+    text-align: left;
+    height: 15px;
+    width: 100%; 
+    padding-top: 1%;
+    padding-left: 3%;
+    padding-bottom: 2%;
+    position: fixed; 
+    background-color: PapayaWhip;
+}
+
+.content-print #category_all {
+    margin: 5px;
+    vertical-align: middle; 
+}
+
+.content-print #label_all {
+    margin: 5px;
+    font-size: 14px;
+    font-weight: initial; 
+    color: #333333;
+    vertical-align: middle;
+}
+
+.content-print #menu_print {
+    top : -10px;
+    right : -10px;
+    text-align: right;
+    height: 10px;
+    width: 63%; 
+    padding-top: 1%;
+    padding-right: 3%;
+    position: fixed; 
+    background-color: PapayaWhip;
+}
+
+.content-print #btn_print {
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 12px; 
+    font-family: Meiryo;
+    color: white;
+    background-color: YellowGreen;
+}
+
+.content-print #checkbox {
+    margin-top: 10px;  
+
+    margin-left: 8px; 
+}
+/*Format for showing kind*/
+.content-print .item_container{
+	padding:10px;
+}
+.content-print .checkbox_container{
+	float:left;
+	margin:2px;
+	padding:1px;
+}
+.content-print .item_content{
+	border-style:solid;
+	border-width:1px;
+	padding:5px;
+}
+.content-print .item_detail{
+	border-style:solid;
+	border-width:1px;
+	padding:5px;
+}
+
+/*End*/
+.content-print #thumbnail {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        margin-left: 10px;
+        margin-right: 10px;
+}
+/*format for table htm format type*/
+.content-print table{
+	width:100%;
+	background-color:none !important;
+}
+/*End format*/
+@media print {
+    .not_print{
+	    display: none; 
+    }
+	
+    #patient {
+	    display: block;
+        font-size: 16px;
+    }
+
+    #kanjiname {
+        display: inline;
+        font-size: 22px;
+    }
+
+    #kananame {
+        display: inline;
+        font-size: 16px;
+    }
+
+    #age {
+        display: inline;
+        font-size: 16px;
+    }
+
+    #sex {
+        display: inline;
+        font-size: 16px;
+    }
+
+    #birth {
+        display: inline;
+        font-size: 16px;
+    }
+
+    #from {
+        display: inline;
+        font-size: 16px;
+    }
+
+    #to {
+        display: inline;
+        font-size: 16px;
+    }
+
+    #sub_title {
+	    display: none; 
+    }
+
+    #check_print {
+	    display: none; 
+    }
+
+    #menu_print {
+	    display: none; 
+    }
+
+    #btn_print {
+	    display: none; 
+    }
+
+    #checkbox {
+        display: none;
+        z-index: 9999; 
+    }
+}
+.content-print .div-level-0 .header-level-0 .plus-minus{
+    border-radius: 5px;
+    border: none;
+}
+.content-print .div-level-0 .content-level-0{
+    padding: 20px 5px 5px 5px;
+}
+
+/*Format inside display search result*/
+.content-print .div-level-0{
+    width: calc(100% - 20px);
+    height: auto;
+    margin: 10px;
+   /* border:1px solid #5070A0;*/
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.content-print .header-level-0{
+    background-color: #5070A0;
+    height: auto;
+    padding: 3px 5px 2px 10px;
+    border-radius: 5px; 
+}
+.content-print .title-format{
+	color: black;
+	margin-left: 40px;
+}
+.content-print .checkbox-pt{
+	float: left;
+	margin-top: 5px;
+	padding-left: 0px;
+}
+.content-print .checkmark-pt{
+	margin-left: 40px;
+}
+
+.content-print fieldset legend{
+	margin-bottom: 0px !important;
+	white-space: normal !important;
+	display: block;
+	/*word-break: break-all !important;*/
+}
